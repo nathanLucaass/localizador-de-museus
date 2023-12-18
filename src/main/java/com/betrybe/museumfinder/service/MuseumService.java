@@ -1,0 +1,64 @@
+package com.betrybe.museumfinder.service;
+
+import com.betrybe.museumfinder.MuseumFinderApplication;
+import com.betrybe.museumfinder.database.MuseumFakeDatabase;
+import com.betrybe.museumfinder.dto.MuseumDto;
+import com.betrybe.museumfinder.exception.InvalidCoordinateException;
+import com.betrybe.museumfinder.exception.MuseumNotFoundException;
+import com.betrybe.museumfinder.model.Coordinate;
+import com.betrybe.museumfinder.model.Museum;
+import com.betrybe.museumfinder.util.CoordinateUtil;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+/**
+ * The type Museum service.
+ */
+@Service
+public class MuseumService implements MuseumServiceInterface {
+
+  private final MuseumFakeDatabase museumFakeDatabase;
+
+  /**
+   * Instantiates a new Museum service.
+   *
+   * @param museumFakeDatabase the museum fake database
+   */
+  @Autowired
+  public MuseumService(MuseumFakeDatabase museumFakeDatabase) {
+    this.museumFakeDatabase = museumFakeDatabase;
+  }
+
+  @Override
+  public Museum createMuseum(Museum museum) {
+    Boolean validCordinate = CoordinateUtil.isCoordinateValid(museum.getCoordinate());
+
+    if (!validCordinate) {
+      throw new InvalidCoordinateException();
+    }
+    return museumFakeDatabase.saveMuseum(museum);
+  }
+
+  @Override
+  public Museum getClosestMuseum(Coordinate coordinate, Double maxDistance) {
+    Boolean validCoordinate = CoordinateUtil.isCoordinateValid(coordinate);
+
+    if (!validCoordinate) {
+      throw new InvalidCoordinateException();
+    }
+
+    Optional<Museum> museum = museumFakeDatabase.getClosestMuseum(coordinate, maxDistance);
+
+    if (museum.isEmpty()) {
+      throw new MuseumNotFoundException();
+    }
+    return museum.get();
+  }
+
+  @Override
+  public Museum getMuseum(Long id) {
+    Optional<Museum> museum = museumFakeDatabase.getMuseum(id);
+    return museum.get();
+  }
+}
