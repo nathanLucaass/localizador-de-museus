@@ -68,6 +68,12 @@ public class MuseumController {
     return ResponseEntity.status(HttpStatus.OK).body(MuseumDto.modelToDto(closest));
   }
 
+  /**
+   * Gets museum by id.
+   *
+   * @param id the id
+   * @return the museum by id
+   */
   @GetMapping("/{id}")
   public ResponseEntity<MuseumDto> getMuseumById(@PathVariable Long id) {
     Museum selectedMuseum = museumService.getMuseum(id);
