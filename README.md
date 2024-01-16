@@ -8,21 +8,21 @@ O Localizador de Museus é uma API desenvolvida em Java com Spring Boot, proporc
 - Docker
 - 
 ## Funcionalidades Implementadas:
--Cadastro de Museus:
+- Cadastro de Museus:
 Permite a criação de museus com detalhes como nome, descrição, endereço, tipo de coleção, e coordenadas geográficas.
 
--Localização de Museus Próximos:
+- Localização de Museus Próximos:
 Fornece uma rota para encontrar o museu mais próximo com base em uma coordenada e distância máxima especificada.
 
--Spring Boot Actuator:
+- Spring Boot Actuator:
 Integração do Spring Boot Actuator para monitoramento e verificação da saúde da aplicação.
 
--Tratamento de Erros Personalizado:
+- Tratamento de Erros Personalizado:
 Implementação de um ControllerAdvice para lidar com exceções personalizadas, como coordenadas inválidas e museus não encontrados.
 
-##Docker:
+## Docker:
 
--Utilização de um Dockerfile multi-estágio para criar uma imagem Docker eficiente e fácil de implantar.
+- Utilização de um Dockerfile multi-estágio para criar uma imagem Docker eficiente e fácil de implantar.
 
 ##Contato:
 - LinkedIn: https://www.linkedin.com/in/nathanlucaass/
