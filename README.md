@@ -26,4 +26,5 @@ Implementação de um ControllerAdvice para lidar com exceções personalizadas,
 
 ## Contato:
 - LinkedIn: https://www.linkedin.com/in/nathanlucaass/
+
 Email: nathanlucaass@outlook.com
